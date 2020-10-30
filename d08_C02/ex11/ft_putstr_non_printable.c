@@ -1,4 +1,3 @@
-
 void	ft_putchar(char c);
 
 void	ft_display_hex(char param)
@@ -13,18 +12,20 @@ void	ft_display_hex(char param)
 	ft_putchar(hexa[param % 16]);
 }
 
-
 void	ft_putstr_non_printable(char *str)
 {
-	while (*str != '\0')
+	int	i;
+
+	i = 0;	
+	while (str[i] != '\0')
 	{
-		if (*str >= 32 && *str <= 126)
-			ft_putchar(*str);
-		else
-		{	
+		if (str[i] >= 0 && str[i] <= 31)
+		{
 			ft_putchar('\\');
-			ft_display_hex(*str);
+			ft_display_hex(str[i]);
 		}
-		str++;
+		else
+			ft_putchar(str[i]);
+		i++;
 	}
 }
